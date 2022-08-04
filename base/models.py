@@ -42,3 +42,12 @@ class Gallery(models.Model):
 
     class Meta:
         ordering = ('position',)
+
+
+class Specials(models.Model):
+    title = models.CharField(unique=True, max_length=50, db_index=True)
+    description = models.TextField(max_length=1000)
+    img = models.ImageField(unique=True, upload_to='uploads/')
+
+    def __str__(self):
+        return f'{self.title} {self.description}'
